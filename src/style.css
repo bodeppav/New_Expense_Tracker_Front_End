@@ -1,0 +1,443 @@
+/* Global Styles */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ffffff, #f4f8fc);
+  color: #333;
+  transition: background-color 0.3s, color 0.3s;
+  min-height: 100vh; /* Ensure the height covers the screen */
+}
+
+/* Dark Mode */
+body.dark {
+  background: #232526; /* Dark mode background */
+  color: #f9f9f9;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh; /* Ensures full height */
+}
+
+/* App Container */
+.App {
+  width: 90%;
+  max-width: 1200px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  margin-top: 40px;
+  min-height: 100vh; /* Ensures full height */
+}
+
+/* Expense Dashboard Header */
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #007bff;
+}
+
+body.dark h1 {
+  color: #fff;
+}
+
+/* Filters Section (Inline Layout) */
+.filters {
+  display: flex;
+  flex-wrap: wrap;  /* Allow wrapping when space is tight */
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 30px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;  /* Ensure filters take the full width */
+}
+
+.filters .form-group {
+  margin-bottom: 0;
+  flex: 1 1 30%; /* Flex-grow, flex-shrink, flex-basis */
+}
+
+.filters .form-label {
+  font-weight: bold;
+}
+
+.filters select,
+.filters input[type="date"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease;
+}
+
+.filters select:focus,
+.filters input[type="date"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Add Expense Button */
+.add-expense-button {
+  position: fixed;
+  top: 80px; /* Adjusted position to avoid overlap */
+  right: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.add-expense-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.5);
+}
+
+/* Logout Button */
+.logout-button {
+  position: fixed;
+  top: 20px;
+  right: 20px; /* Move logout button to top-right */
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(220, 53, 69, 0.3);
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.logout-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(220, 53, 69, 0.5);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 12px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background: transparent;
+  color: #007bff;
+  font-size: 1.5rem;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+/* Chart Section */
+.chart-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.chart {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.chart h3 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Expense Table Styling */
+.expense-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.expense-table th, .expense-table td {
+  padding: 18px;
+  text-align: left;
+  border: 1px solid #ddd;
+  transition: all 0.3s;
+  font-size: 16px;
+}
+
+.expense-table th {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.expense-table td {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.expense-table tr:nth-child(even) {
+  background-color: #f1f1f1;
+}
+
+.expense-table tr:hover {
+  background-color: #e1e1e1;
+  transform: translateY(-2px);
+}
+
+/* Dark Mode Table Styling */
+body.dark .expense-table th {
+  background-color: #444;
+  color: #fff;
+}
+
+body.dark .expense-table td {
+  background-color: #333;
+  color: #ddd;
+}
+
+.expense-table .actions {
+  display: flex;
+  gap: 15px;
+}
+
+.expense-table button {
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.expense-table button.edit {
+  background-color: #28a745;
+  color: white;
+}
+
+.expense-table button.delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.expense-table button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Pagination Styling */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background: #e30b5c;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.pagination button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Modal Styling */
+.modal-backdrop {
+  z-index: 1040 !important;
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050 !important;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  flex-direction: column;
+  gap: 20px;
+  overflow: hidden;
+  height: auto;
+  min-height: 450px;
+}
+
+/* Modal Header */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 1.5rem;
+}
+
+.modal-header .btn-close {
+  font-size: 2rem;
+  color: white;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Modal Body */
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  padding: 10px;
+  overflow: hidden;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+form input,
+form select {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+form input:focus,
+form select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+/* Buttons in Modal */
+.modal-body .button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.modal-body .button-container button {
+  padding: 12px 15px;
+  font-size: 16px;
+  border-radius: 8px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-body .cancel-button {
+  background: #6c757d;
+}
+
+.modal-body .add-button {
+  background: #007bff;
+}
+
+.modal-body .button-container button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modal-body {
+    max-height: 400px;
+  }
+
+  .pagination button {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+
+  .expense-table th, .expense-table td {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .add-expense-button {
+    padding: 10px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-body {
+    max-height: 450px;
+  }
+
+  .pagination button {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+
+  .expense-table th, .expense-table td {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .add-expense-button {
+    padding: 10px 15px;
+  }
+}
